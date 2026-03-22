@@ -1,6 +1,9 @@
 package org.example;
 
+import org.example.ExLinkedList.LinkedList001;
+import org.example.ExLinkedList.LinkedList002;
 import org.example.exercisesInsertionSort.LinkedList;
+import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,11 +18,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        List<String> nums = new LinkedList<>(List.of("4", "2", "3"));
-        int[] arr = {5, 4, 3};
-        System.out.println(Arrays.toString(insertion(arr)));
+        LinkedList002.ListNode list = new LinkedList002.ListNode(1, new LinkedList002.ListNode(1, new LinkedList002.ListNode(2,new LinkedList002.ListNode(2, new LinkedList002.ListNode(3)))));
+        LinkedList002 list002 = new LinkedList002(list);
 
-
+        System.out.println(list002.deleteDuplicates(list));
 //        LinkedList list = new LinkedList(new LinkedList.LinkNode(2, new LinkedList.LinkNode(3, new LinkedList.LinkNode(4, new LinkedList.LinkNode(5, null)))));
 //        list.insertHead(1);
 //        int value = list.get(1);
@@ -28,6 +30,8 @@ public class Main {
 //        System.out.println(countDigits(2222455));
 
     }
+
+
 
 
 
