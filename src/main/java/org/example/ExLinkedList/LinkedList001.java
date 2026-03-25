@@ -115,6 +115,20 @@ public class LinkedList001 {
 
     }
 
+    public Node get(int index){
+        Node curr = this.head;
+        for (int i = 0; i <= index ; i++) {
+            if(curr == null){
+                throw new IndexOutOfBoundsException("O valor do índice excedeu o tamanho da lista.");
+            }
+            curr = curr.next;
+
+
+        }
+        return curr;
+
+    }
+
 
     @Override
     public String toString() {

@@ -4,6 +4,7 @@ class Node {
     int val;
     Node next;
 
+
     Node(int val) {
         this.val = val;
     }
@@ -35,8 +36,13 @@ class Node {
 
 }
 
+
 class Solution {
     Node newNode;
+
+    public Solution(Node node){
+        this.newNode = node;
+    }
 
     public Node reverseList(Node head) {
 
@@ -49,49 +55,67 @@ class Solution {
 
     }
 
-    public boolean hasCycle(Node head){
+    public boolean hasCycle(Node head ){
         if(head == null){
             return false;
+
         }
 
         Node fast = head;
         Node slow = head;
 
-        while(fast != null && fast.next != null){
-
+        while(fast.next != null && fast.next.next != null){
             fast = fast.next.next;
             slow = slow.next;
 
-            if(fast == slow){
+            if(slow == fast){
                 return true;
             }
 
-
         }
+
         return false;
 
     }
 
     public Node middleNode(Node head){
+        if(head == null){
+            return null;
+        }
+
+        int count = 0;
         Node fast = head;
         Node slow = head;
 
-        while(fast != null && fast.next != null){
+        while(fast.next != null && fast.next.next != null){
 
             fast = fast.next.next;
             slow = slow.next;
-
-
+            count++;
         }
-
+        if(fast.next != null){
+            return slow.next;
+        }
         return slow;
+    }
+// [1,2,3,4,5, 6]
+    public int get(int index) {
+        Node curr = this.newNode;
+        for (int i = 0; i < index; i++) {
+            if (curr.next == null) {
+                throw new IndexOutOfBoundsException("O valor do índice excedeu o tamanho da lista.");
+            }
+            curr = curr.next;
+        }
+        return curr.val;
 
     }
 
-
-
-
 }
+
+
+
+
 
 
 class Main {
@@ -103,18 +127,13 @@ class Main {
         Node n5 = new Node(5);
 
 
-        // Montando a lista
-        n1.next = n2;
-        n2.next = n3;
-        n3.next = n4;
-        n4.next = n5;
 
 
 
 
 
-        Solution solution = new Solution();
+        Solution solution = new Solution(new Node(1, new Node(2, new Node(3, new Node(4)))));
 
-        System.out.println(solution.middleNode(n1));
+        System.out.println(solution.get(3));
     }
 }
